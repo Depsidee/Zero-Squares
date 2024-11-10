@@ -20,7 +20,7 @@ class Move:
                         next_state.grid[i][y] = pre_state.grid[i][j]
                         next_state.color[i][y] = pre_state.color[i][j]
                         next_state.status[i][y] = pre_state.status[i][j]
-                    return next_state
+        return next_state
     
     def move_left(self, pre_state):
         next_state = copy.deepcopy(pre_state)
@@ -38,7 +38,7 @@ class Move:
                         next_state.grid[i][y] = pre_state.grid[i][j]
                         next_state.color[i][y] = pre_state.color[i][j]
                         next_state.status[i][y] = pre_state.status[i][j]
-                    return next_state
+        return next_state
     
     def move_up(self, pre_state):
         next_state = copy.deepcopy(pre_state)
@@ -56,7 +56,7 @@ class Move:
                         next_state.grid[x][j] = pre_state.grid[i][j]
                         next_state.color[x][j] = pre_state.color[i][j]
                         next_state.status[x][j] = pre_state.status[i][j]
-                    return next_state
+        return next_state
     
     def move_down(self, pre_state):
         next_state = copy.deepcopy(pre_state)
@@ -74,7 +74,8 @@ class Move:
                         next_state.grid[x][j] = pre_state.grid[i][j]
                         next_state.color[x][j] = pre_state.color[i][j]
                         next_state.status[x][j] = pre_state.status[i][j]
-                    return next_state
+        return next_state
+    
     def check_right(self, pre_state, next_state, x, y):
         end = False
         j = y

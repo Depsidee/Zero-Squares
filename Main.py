@@ -1,18 +1,20 @@
 import Levels
 import State
 import Move
+
 import copy
 
 class Main:
     levels = Levels.Levels()
+    move = Move.Move()
     level_number = 1
     level = levels.new_level(level_number)
     states = []
     pre_state = State.State(level["grid"],level["color"],level["status"])
     states.append(pre_state)
-    
     print(pre_state.show())
-    move = Move.Move()
+    pre_state.state_space()
+    
     continue_loop = True
     while continue_loop == True:
         x = input()
@@ -24,8 +26,11 @@ class Main:
             next_state = move.move_up(pre_state)
         elif x == "down":
             next_state = move.move_down(pre_state)
+            
         states.append(next_state)
         print(next_state.show())
+        this_state_space = next_state.state_space()
+        
         if next_state.check_win() == True:
             print("You Won.")
             level_number += 1
@@ -36,7 +41,9 @@ class Main:
             else:
                 pre_state = State.State(level["grid"],level["color"],level["status"])
                 next_state = copy.deepcopy(pre_state)
+        
         pre_state = copy.deepcopy(next_state)
+        pre_state.stateSpace.clear()
         
 
         
