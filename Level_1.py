@@ -1,3 +1,5 @@
+import copy
+
 class Level_1:
     def __init__(self):
         pass
@@ -21,3 +23,23 @@ class Level_1:
             ]
         }
         return self.level1
+    
+    def generate_goal_1(self):
+        self.goal1 = {
+            "grid": [
+                ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"],
+                ["⬛️","⬜️","⬜️","⬜️","⬜️","⬜️","⬜️","⬛️"],
+                ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"]
+            ],
+            "color": [
+                ["black","black","black","black","black","black","black","black"],
+                ["black","white","white","white","white","white","white","black"],
+                ["black","black","black","black","black","black","black","black"]
+            ],
+            "status": [
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"]
+            ]
+        }
+        return self.goal1

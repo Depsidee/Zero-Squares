@@ -30,3 +30,32 @@ class Level_2:
             ]
         }
         return self.level2
+    
+    def generate_goal_2(self):
+        self.goal2 = {
+            "grid": [
+                ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"],
+                ["⬛️","⬜️","⬜️","⬛️","⬜️","⬜️","⬜️","⬛️"],
+                ["⬛️","⬜️","⬜️","⬜️","⬜️","⬜️","⬜️","⬛️"],
+                ["⬛️","⬜️","⬜️","⬜️","⬜️","⬜️","⬜️","⬛️"],
+                ["⬛️","⬛️","⬛️","⬛️","⬜️","⬛️","⬛️","⬛️"],
+                ["⬜️","⬜️","⬜️","⬛️","⬛️","⬛️","⬜️","⬜️"]
+            ],
+            "color": [
+                ["black","black","black","black","black","black","black","black"],
+                ["black","white","white","black","white","white","white","black"],
+                ["black","white","white","white","white","white","white","black"],
+                ["black","white","white","white","white","white","white","black"],
+                ["black","black","black","black","white","black","black","black"],
+                ["white","white","white","black","black","black","white","white"]
+            ],
+            "status": [
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
+                ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"]
+            ]
+        }
+        return self.goal2

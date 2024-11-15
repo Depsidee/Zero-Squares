@@ -9,6 +9,19 @@ class State:
         self.status = status
         self.stateSpace = []
     
+    def __eq__(self, other):
+        if not isinstance(other, State):
+            return False
+        return (self.grid == other.grid and
+            self.color == other.color and
+            self.status == other.status)
+        
+    
+    def __hash__(self):
+         return hash((tuple(map(tuple, self.grid)), 
+                     tuple(map(tuple, self.color)), 
+                     tuple(map(tuple, self.status))))
+    
     def state_space(self):
         next_state = move.move_right(self)
         if self.grid != next_state.grid :
@@ -26,9 +39,9 @@ class State:
         if self.grid != next_state.grid :
             self.stateSpace.append(next_state)
         
-        if len(self.stateSpace) != 0 :
+        """ if len(self.stateSpace) != 0 :
             print("State Space for this state:")
-            print(self.print_state_space())
+            print(self.print_state_space()) """
         
         return self.stateSpace
     
