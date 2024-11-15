@@ -2,6 +2,7 @@ import Levels
 import State
 import Move
 import BFS
+import DFS
 import copy
 
 class Main:
@@ -22,6 +23,9 @@ class Main:
         if x == "bfs":
             bfs = BFS.BFS()
             path = bfs.play_BFS(pre_state,goal_state)
+        elif x == "dfs":
+            dfs = DFS.DFS()
+            path = dfs.play_DFS(pre_state,goal_state)
             
         level_number += 1
         level, goal = levels.new_level(level_number)
