@@ -3,6 +3,7 @@ import State
 import Move
 import BFS
 import DFS
+import Recursive_DFS
 import copy
 
 class Main:
@@ -26,6 +27,13 @@ class Main:
         elif x == "dfs":
             dfs = DFS.DFS()
             path = dfs.play_DFS(pre_state,goal_state)
+        elif x == "recursive dfs":
+            recursive_dfs = Recursive_DFS.Recursive_DFS()
+            path = recursive_dfs.play_recursive_DFS(pre_state,goal_state)
+            if path is not None:
+                path.reverse()
+                for state in path:
+                    print(state.show())
             
         level_number += 1
         level, goal = levels.new_level(level_number)
