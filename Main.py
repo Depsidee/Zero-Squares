@@ -4,6 +4,7 @@ import Move
 import BFS
 import DFS
 import Recursive_DFS
+import UCS
 import copy
 
 class Main:
@@ -32,6 +33,9 @@ class Main:
         elif x == "recursive dfs":
             recursive_dfs = Recursive_DFS.Recursive_DFS()
             path = recursive_dfs.play_recursive_DFS(pre_state,goal_state)
+        elif x == "ucs":
+            ucs = UCS.UCS()
+            path = ucs.play_UCS(pre_state,goal_state)
             
         level_number += 1
         level, goal = levels.new_level(level_number)

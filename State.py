@@ -21,6 +21,9 @@ class State:
          return hash((tuple(map(tuple, self.grid)), 
                      tuple(map(tuple, self.color)), 
                      tuple(map(tuple, self.status))))
+         
+    def __lt__(self, other):
+        return self.grid < other.grid
     
     def state_space(self):
         next_state = move.move_right(self)
