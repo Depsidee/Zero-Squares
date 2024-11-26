@@ -21,6 +21,8 @@ class Main:
     continue_loop = True
     while continue_loop == True:
         x = input()
+        
+        """ Computer Plays """
         if x == "bfs":
             bfs = BFS.BFS()
             path = bfs.play_BFS(pre_state,goal_state)
@@ -30,10 +32,6 @@ class Main:
         elif x == "recursive dfs":
             recursive_dfs = Recursive_DFS.Recursive_DFS()
             path = recursive_dfs.play_recursive_DFS(pre_state,goal_state)
-            if path is not None:
-                path.reverse()
-                for state in path:
-                    print(state.show())
             
         level_number += 1
         level, goal = levels.new_level(level_number)
@@ -43,7 +41,8 @@ class Main:
         else:
             pre_state = State.State(level["grid"],level["color"],level["status"])
             goal_state = State.State(goal["grid"],goal["color"],goal["status"])
-            
+         
+        """ User Plays  """  
         """ if x == "right":
             next_state = move.move_right(pre_state)
         elif x == "left":
@@ -60,7 +59,7 @@ class Main:
         if next_state.check_win() == True:
             print("You Won.")
             level_number += 1
-            level = levels.new_level(level_number)
+            level, goal = levels.new_level(level_number)
             if level == False:
                 print("Congratulations, You have finished the game.")
                 continue_loop = False
