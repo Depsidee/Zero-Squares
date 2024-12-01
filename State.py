@@ -89,5 +89,5 @@ class State:
                                 manhatain_dist = abs(i-ii)+abs(j-jj)
                                 heuristic += manhatain_dist
                                 
-        heuristic += free
+        """ heuristic += free """
         return heuristic

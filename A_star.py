@@ -9,12 +9,15 @@ class A_star:
          pq = []
          parent = {}
          cost = {}
+         heuristic = {}
          parent[init_state] = None
-         cost[init_state] = init_state.get_heuristic()
-         heapq.heappush(pq, (cost[init_state], init_state))
+         cost[init_state] = 0
+         heuristic[init_state] = cost[init_state] + init_state.get_heuristic()
+         heapq.heappush(pq, (heuristic[init_state], init_state))
          
          while len(pq) > 0:
-            current_cost, current_state = heapq.heappop(pq)
+            current_heuristic, current_state = heapq.heappop(pq)
+            current_cost = cost[current_state]
             if current_state in visited:
                 continue
             visited.add(current_state)
@@ -24,11 +27,12 @@ class A_star:
                 print(f"Number of visited states = {len(visited)}")
                 return path
             for next_state in current_state.state_space():
-                new_cost = next_state.get_heuristic()
+                new_cost = current_cost + 1
                 if next_state not in parent or (next_state in cost and new_cost < cost[next_state]):
                     parent[next_state] = current_state
                     cost[next_state] = new_cost
-                    heapq.heappush(pq, (new_cost, next_state))
+                    heuristic[next_state] = cost[next_state] + next_state.get_heuristic()
+                    heapq.heappush(pq, (heuristic[next_state], next_state))
             
          return None
     

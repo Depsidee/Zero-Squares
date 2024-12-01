@@ -6,6 +6,7 @@ import DFS
 import Recursive_DFS
 import UCS
 import A_star
+import Hill_Climbing
 import copy
 
 class Main:
@@ -42,6 +43,9 @@ class Main:
         elif x == "a*":
             a_star = A_star.A_star()
             path = a_star.play_A_star(pre_state,goal_state)
+        elif x == "hill climbing":
+            hill_climbing = Hill_Climbing.Hil_Climbing()
+            path = hill_climbing.play_Hill_Climbing(pre_state, goal_state)
             
         level_number += 1
         level, goal = levels.new_level(level_number)
