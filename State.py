@@ -42,9 +42,9 @@ class State:
         if self.grid != next_state.grid :
             self.stateSpace.append(next_state)
         
-        """ if len(self.stateSpace) != 0 :
+        if len(self.stateSpace) != 0 :
             print("State Space for this state:")
-            print(self.print_state_space()) """
+            print(self.print_state_space())
         
         return self.stateSpace
     
@@ -75,3 +75,19 @@ class State:
                 if self.status[i][j] == "free":
                     return False
         return ans
+    
+    def get_heuristic(self):
+        heuristic = 0
+        free = 0
+        for i in range(len(self.status)):
+            for j in range(len(self.status[i])):
+                if self.status[i][j] == "free":
+                    free += 1
+                    for ii in range(len(self.status)):
+                        for jj in range(len(self.status[ii])):
+                            if self.color[ii][jj] == self.color[i][j] and self.status[ii][jj] != self.status[i][j]:
+                                manhatain_dist = abs(i-ii)+abs(j-jj)
+                                heuristic += manhatain_dist
+                                
+        heuristic += free
+        return heuristic

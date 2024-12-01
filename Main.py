@@ -24,7 +24,7 @@ class Main:
         x = input()
         
         """ Computer Plays """
-        if x == "bfs":
+        """ if x == "bfs":
             bfs = BFS.BFS()
             path = bfs.play_BFS(pre_state,goal_state)
         elif x == "dfs":
@@ -44,10 +44,10 @@ class Main:
             continue_loop = False
         else:
             pre_state = State.State(level["grid"],level["color"],level["status"])
-            goal_state = State.State(goal["grid"],goal["color"],goal["status"])
+            goal_state = State.State(goal["grid"],goal["color"],goal["status"]) """
          
         """ User Plays  """  
-        """ if x == "right":
+        if x == "right":
             next_state = move.move_right(pre_state)
         elif x == "left":
             next_state = move.move_left(pre_state)
@@ -57,6 +57,7 @@ class Main:
             next_state = move.move_down(pre_state)
             
         states.append(next_state)
+        print(f"heuristic = {next_state.get_heuristic()}")
         print(next_state.show())
         this_state_space = next_state.state_space()
         
@@ -72,7 +73,7 @@ class Main:
                 next_state = copy.deepcopy(pre_state)
         
         pre_state = copy.deepcopy(next_state)
-        pre_state.stateSpace.clear() """
+        pre_state.stateSpace.clear()
         
 
         
