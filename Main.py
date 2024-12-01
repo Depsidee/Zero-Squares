@@ -5,18 +5,21 @@ import BFS
 import DFS
 import Recursive_DFS
 import UCS
+import A_star
 import copy
 
 class Main:
     levels = Levels.Levels()
     move = Move.Move()
-    level_number = 1
+    level_number = 9
     level, goal = levels.new_level(level_number)
     states = []
     pre_state = State.State(level["grid"],level["color"],level["status"])
     goal_state = State.State(goal["grid"],goal["color"],goal["status"])
     states.append(pre_state)
     print(pre_state.show())
+    print(f"heuristic = {pre_state.get_heuristic()}")
+    print()
     pre_state.state_space()
     
     continue_loop = True
@@ -24,7 +27,7 @@ class Main:
         x = input()
         
         """ Computer Plays """
-        """ if x == "bfs":
+        if x == "bfs":
             bfs = BFS.BFS()
             path = bfs.play_BFS(pre_state,goal_state)
         elif x == "dfs":
@@ -36,6 +39,9 @@ class Main:
         elif x == "ucs":
             ucs = UCS.UCS()
             path = ucs.play_UCS(pre_state,goal_state)
+        elif x == "a*":
+            a_star = A_star.A_star()
+            path = a_star.play_A_star(pre_state,goal_state)
             
         level_number += 1
         level, goal = levels.new_level(level_number)
@@ -44,10 +50,10 @@ class Main:
             continue_loop = False
         else:
             pre_state = State.State(level["grid"],level["color"],level["status"])
-            goal_state = State.State(goal["grid"],goal["color"],goal["status"]) """
-         
+            goal_state = State.State(goal["grid"],goal["color"],goal["status"])
+        
         """ User Plays  """  
-        if x == "right":
+        """ if x == "right":
             next_state = move.move_right(pre_state)
         elif x == "left":
             next_state = move.move_left(pre_state)
@@ -73,7 +79,4 @@ class Main:
                 next_state = copy.deepcopy(pre_state)
         
         pre_state = copy.deepcopy(next_state)
-        pre_state.stateSpace.clear()
-        
-
-        
+        pre_state.stateSpace.clear() """    

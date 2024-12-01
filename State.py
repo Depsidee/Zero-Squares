@@ -42,9 +42,9 @@ class State:
         if self.grid != next_state.grid :
             self.stateSpace.append(next_state)
         
-        if len(self.stateSpace) != 0 :
+        """ if len(self.stateSpace) != 0 :
             print("State Space for this state:")
-            print(self.print_state_space())
+            print(self.print_state_space()) """
         
         return self.stateSpace
     
