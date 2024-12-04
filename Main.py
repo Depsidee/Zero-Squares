@@ -12,12 +12,12 @@ import copy
 class Main:
     levels = Levels.Levels()
     move = Move.Move()
-    level_number = 9
+    level_number = 12
     level, goal = levels.new_level(level_number)
-    states = []
-    pre_state = State.State(level["grid"],level["color"],level["status"])
+
+    pre_state = State.State(level["grid"],level["color"],level["status"],level["fixed_grid"],level["fixed_color"])
     goal_state = State.State(goal["grid"],goal["color"],goal["status"])
-    states.append(pre_state)
+
     print(pre_state.show())
     print(f"heuristic = {pre_state.get_heuristic()}")
     print()
@@ -44,7 +44,7 @@ class Main:
             a_star = A_star.A_star()
             path = a_star.play_A_star(pre_state,goal_state)
         elif x == "hill climbing":
-            hill_climbing = Hill_Climbing.Hil_Climbing()
+            hill_climbing = Hill_Climbing.Hill_Climbing()
             path = hill_climbing.play_Hill_Climbing(pre_state, goal_state)
             
         level_number += 1
@@ -53,7 +53,7 @@ class Main:
             print("Congratulations, You have finished the game.")
             continue_loop = False
         else:
-            pre_state = State.State(level["grid"],level["color"],level["status"])
+            pre_state = State.State(level["grid"],level["color"],level["status"],level["fixed_grid"],level["fixed_color"])
             goal_state = State.State(goal["grid"],goal["color"],goal["status"])
         
         """ User Plays  """  
@@ -66,7 +66,7 @@ class Main:
         elif x == "down":
             next_state = move.move_down(pre_state)
             
-        states.append(next_state)
+
         print(f"heuristic = {next_state.get_heuristic()}")
         print(next_state.show())
         this_state_space = next_state.state_space()
@@ -82,5 +82,4 @@ class Main:
                 pre_state = State.State(level["grid"],level["color"],level["status"])
                 next_state = copy.deepcopy(pre_state)
         
-        pre_state = copy.deepcopy(next_state)
-        pre_state.stateSpace.clear() """    
+        pre_state = copy.deepcopy(next_state) """   

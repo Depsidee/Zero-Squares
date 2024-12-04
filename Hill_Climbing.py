@@ -1,6 +1,6 @@
 import State
 from collections import deque
-class Hil_Climbing:
+class Hill_Climbing:
     def __init__(self):
         pass
     
@@ -17,7 +17,7 @@ class Hil_Climbing:
             visited.add(current_state)
             
             if current_state.grid == goal_state.grid:
-                path = self.get_path(parent, goal_state)
+                path = self.get_path(parent, current_state)
                 print(f"Number of visited states = {len(visited)}")
                 return path
             for next_state in current_state.state_space():

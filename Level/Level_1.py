@@ -8,7 +8,7 @@ class Level_1:
         self.level1 = {
             "grid": [
                 ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"],
-                ["⬛️","💖","⬜️","⬜️","⬜️","⬜️","💖","⬛️"],
+                ["⬛️","🟥","⬜️","⬜️","⬜️","⬜️","🟥","⬛️"],
                 ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"]
             ],
             "color": [
@@ -20,6 +20,16 @@ class Level_1:
                 ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"],
                 ["fixed","free","fixed","fixed","fixed","fixed","fixed","fixed"],
                 ["fixed","fixed","fixed","fixed","fixed","fixed","fixed","fixed"]
+            ],
+            "fixed_grid": [
+                ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"],
+                ["⬛️","⬜️","⬜️","⬜️","⬜️","⬜️","🟥","⬛️"],
+                ["⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️","⬛️"]
+            ],
+            "fixed_color": [
+                ["black","black","black","black","black","black","black","black"],
+                ["black","white","white","white","white","white","red","black"],
+                ["black","black","black","black","black","black","black","black"]
             ]
         }
         return self.level1
