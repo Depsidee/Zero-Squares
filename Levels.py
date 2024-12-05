@@ -23,6 +23,11 @@ from Level import Level_22
 from Level import Level_23
 from Level import Level_24
 from Level import Level_25
+from Level import Level_26
+from Level import Level_27
+from Level import Level_28
+from Level import Level_29
+from Level import Level_30
 
 import copy
 
@@ -106,5 +111,20 @@ class Levels:
         elif level_number == 25:
             level_25 = Level_25.Level_25()
             return level_25.generate_level_25(), level_25.generate_goal_25()
+        elif level_number == 26:
+            level_26 = Level_26.Level_26()
+            return level_26.generate_level_26(), level_26.generate_goal_26()
+        elif level_number == 27:
+            level_27 = Level_27.Level_27()
+            return level_27.generate_level_27(), level_27.generate_goal_27()
+        elif level_number == 28:
+            level_28 = Level_28.Level_28()
+            return level_28.generate_level_28(), level_28.generate_goal_28()
+        elif level_number == 29:
+            level_29 = Level_29.Level_29()
+            return level_29.generate_level_29(), level_29.generate_goal_29()
+        elif level_number == 30:
+            level_30 = Level_30.Level_30()
+            return level_30.generate_level_30(), level_30.generate_goal_30()
         else:
             return False, False

@@ -12,7 +12,7 @@ import copy
 class Main:
     levels = Levels.Levels()
     move = Move.Move()
-    level_number = 25
+    level_number = 26
     level, goal = levels.new_level(level_number)
 
     pre_state = State.State(level["grid"],level["color"],level["status"],level["fixed_grid"],level["fixed_color"])

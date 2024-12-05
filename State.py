@@ -32,25 +32,26 @@ class State:
     def state_space(self):
         self.stateSpace.clear()
         
-        next_state = move.move_right(self)
-        if self.grid != next_state.grid :
-            self.stateSpace.append(next_state)
-        
-        next_state = move.move_left(self)
-        if self.grid != next_state.grid :
-            self.stateSpace.append(next_state)
-        
-        next_state = move.move_up(self)
-        if self.grid != next_state.grid :
-            self.stateSpace.append(next_state)
-        
-        next_state = move.move_down(self)
-        if self.grid != next_state.grid :
-            self.stateSpace.append(next_state)
-        
-        """ if len(self.stateSpace) != 0 :
-            print("State Space for this state:")
-            print(self.print_state_space()) """
+        if self.check_possibility():
+            next_state = move.move_right(self)
+            if self.grid != next_state.grid :
+                self.stateSpace.append(next_state)
+            
+            next_state = move.move_left(self)
+            if self.grid != next_state.grid :
+                self.stateSpace.append(next_state)
+            
+            next_state = move.move_up(self)
+            if self.grid != next_state.grid :
+                self.stateSpace.append(next_state)
+            
+            next_state = move.move_down(self)
+            if self.grid != next_state.grid :
+                self.stateSpace.append(next_state)
+            
+            """ if len(self.stateSpace) != 0 :
+                print("State Space for this state:")
+                print(self.print_state_space()) """
         
         return self.stateSpace
     
@@ -97,3 +98,29 @@ class State:
                                 
         """ heuristic += free """
         return heuristic
+    
+    def check_possibility(self):
+    
+        if sum(item.count("red") for item in self.fixed_color) > 1:
+            return False
+        if sum(item.count("blue") for item in self.fixed_color) > 1:
+            return False
+        if sum(item.count("yellow") for item in self.fixed_color) > 1:
+            return False
+        if sum(item.count("green") for item in self.fixed_color) > 1:
+            return False
+        if sum(item.count("purple") for item in self.fixed_color) > 1:
+            return False
+        
+        free = 0
+        fixed = 0
+        for i in range(len(self.grid)):
+            for j in range(len(self.grid[i])):
+                if self.status[i][j] == "free":
+                    free += 1
+                if self.fixed_color[i][j] not in ["white", "black", "open_black"]:
+                    fixed += 1
+        if fixed != free:
+            return False
+        
+        return True

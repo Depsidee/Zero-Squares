@@ -118,6 +118,11 @@ class Move:
                 break
             if next_state.color[x][j+1] == "open_black":
                 return False, -1
+            if pre_state.color[x][j+1] == "open_white":
+                next_state.grid[x][j+1] = pre_state.grid[x][y]
+                next_state.color[x][j+1] = pre_state.color[x][y]
+                next_state.fixed_grid[x][j+1] = pre_state.grid[x][y]
+                next_state.fixed_color[x][j+1] = pre_state.color[x][y]
             j += 1
         return end, j
     
@@ -135,6 +140,11 @@ class Move:
                 break
             if next_state.color[x][j-1] == "open_black":
                 return False, -1
+            if pre_state.color[x][j-1] == "open_white":
+                next_state.grid[x][j-1] = pre_state.grid[x][y]
+                next_state.color[x][j-1] = pre_state.color[x][y]
+                next_state.fixed_grid[x][j-1] = pre_state.grid[x][y]
+                next_state.fixed_color[x][j-1] = pre_state.color[x][y]
             j -= 1
         return end, j
     
@@ -152,6 +162,11 @@ class Move:
                 break
             if next_state.color[i-1][y] == "open_black":
                 return False, -1
+            if pre_state.color[i-1][y] == "open_white":
+                next_state.grid[i-1][y] = pre_state.grid[x][y]
+                next_state.color[i-1][y] = pre_state.color[x][y]
+                next_state.fixed_grid[i-1][y] = pre_state.grid[x][y]
+                next_state.fixed_color[i-1][y] = pre_state.color[x][y]
             i -= 1
         return end, i
     
@@ -169,5 +184,10 @@ class Move:
                 break
             if next_state.color[i+1][y] == "open_black":
                 return False, -1
+            if pre_state.color[i+1][y] == "open_white":
+                next_state.grid[i+1][y] = pre_state.grid[x][y]
+                next_state.color[i+1][y] = pre_state.color[x][y]
+                next_state.fixed_grid[i+1][y] = pre_state.grid[x][y]
+                next_state.fixed_color[i+1][y] = pre_state.color[x][y]
             i += 1
         return end, i
