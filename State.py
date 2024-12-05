@@ -78,7 +78,7 @@ class State:
         ans = True
         for i in range(len(self.status)):
             for j in range(len(self.status[i])):
-                if self.status[i][j] == "free":
+                if self.status[i][j] == "free" or (self.color[i][j] not in ["white", "black", "open_black"]):
                     return False
         return ans
     

@@ -16,18 +16,17 @@ class Move:
                     if end == True:
                         next_state.grid[i][y] = "⬜️"
                         next_state.color[i][y] = "white"
-                    else :
+                        next_state.fixed_grid[i][y] = "⬜️"
+                        next_state.fixed_color[i][y] = "white"
+                    elif y != -1:
                         next_state.grid[i][y] = pre_state.grid[i][j]
                         next_state.color[i][y] = pre_state.color[i][j]
                         next_state.status[i][y] = pre_state.status[i][j]
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
-                    for ii in range(len(next_state.grid)):
-                        for jj in range(len(next_state.grid[ii])): 
-                            if next_state.color[ii][jj] == next_state.fixed_color[i][j] and next_state.status[ii][jj] == "free":
-                                next_state.grid[i][j] = next_state.fixed_grid[i][j]
-                                next_state.color[i][j] = next_state.fixed_color[i][j]
+                        next_state.grid[i][j] = next_state.fixed_grid[i][j]
+                        next_state.color[i][j] = next_state.fixed_color[i][j]
         return next_state
     
     def move_left(self, pre_state):
@@ -42,18 +41,17 @@ class Move:
                     if end == True:
                         next_state.grid[i][y] = "⬜️"
                         next_state.color[i][y] = "white"
-                    else :
+                        next_state.fixed_grid[i][y] = "⬜️"
+                        next_state.fixed_color[i][y] = "white"
+                    elif y != -1:
                         next_state.grid[i][y] = pre_state.grid[i][j]
                         next_state.color[i][y] = pre_state.color[i][j]
                         next_state.status[i][y] = pre_state.status[i][j]
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
-                    for ii in range(len(next_state.grid)):
-                        for jj in range(len(next_state.grid[ii])): 
-                            if next_state.color[ii][jj] == next_state.fixed_color[i][j] and next_state.status[ii][jj] == "free":
-                                next_state.grid[i][j] = next_state.fixed_grid[i][j]
-                                next_state.color[i][j] = next_state.fixed_color[i][j]
+                        next_state.grid[i][j] = next_state.fixed_grid[i][j]
+                        next_state.color[i][j] = next_state.fixed_color[i][j]
         return next_state
     
     def move_up(self, pre_state):
@@ -68,18 +66,17 @@ class Move:
                     if end == True:
                         next_state.grid[x][j] = "⬜️"
                         next_state.color[x][j] = "white"
-                    else :
+                        next_state.fixed_grid[x][j] = "⬜️"
+                        next_state.fixed_color[x][j] = "white"
+                    elif x != -1:
                         next_state.grid[x][j] = pre_state.grid[i][j]
                         next_state.color[x][j] = pre_state.color[i][j]
                         next_state.status[x][j] = pre_state.status[i][j]
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
-                    for ii in range(len(next_state.grid)):
-                        for jj in range(len(next_state.grid[ii])): 
-                            if next_state.color[ii][jj] == next_state.fixed_color[i][j] and next_state.status[ii][jj] == "free":
-                                next_state.grid[i][j] = next_state.fixed_grid[i][j]
-                                next_state.color[i][j] = next_state.fixed_color[i][j]
+                        next_state.grid[i][j] = next_state.fixed_grid[i][j]
+                        next_state.color[i][j] = next_state.fixed_color[i][j]
         return next_state
     
     def move_down(self, pre_state):
@@ -94,18 +91,17 @@ class Move:
                     if end == True:
                         next_state.grid[x][j] = "⬜️"
                         next_state.color[x][j] = "white"
-                    else :
+                        next_state.fixed_grid[x][j] = "⬜️"
+                        next_state.fixed_color[x][j] = "white"
+                    elif x != -1:
                         next_state.grid[x][j] = pre_state.grid[i][j]
                         next_state.color[x][j] = pre_state.color[i][j]
                         next_state.status[x][j] = pre_state.status[i][j]
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
-                    for ii in range(len(next_state.grid)):
-                        for jj in range(len(next_state.grid[ii])): 
-                            if next_state.color[ii][jj] == next_state.fixed_color[i][j] and next_state.status[ii][jj] == "free":
-                                next_state.grid[i][j] = next_state.fixed_grid[i][j]
-                                next_state.color[i][j] = next_state.fixed_color[i][j]
+                        next_state.grid[i][j] = next_state.fixed_grid[i][j]
+                        next_state.color[i][j] = next_state.fixed_color[i][j]
         return next_state
     
     def check_right(self, pre_state, next_state, x, y):
@@ -120,6 +116,8 @@ class Move:
                 end = True
                 j +=1
                 break
+            if next_state.color[x][j+1] == "open_black":
+                return False, -1
             j += 1
         return end, j
     
@@ -135,6 +133,8 @@ class Move:
                 end = True
                 j -=1
                 break
+            if next_state.color[x][j-1] == "open_black":
+                return False, -1
             j -= 1
         return end, j
     
@@ -150,6 +150,8 @@ class Move:
                 end = True
                 i -=1
                 break
+            if next_state.color[i-1][y] == "open_black":
+                return False, -1
             i -= 1
         return end, i
     
@@ -165,5 +167,7 @@ class Move:
                 end = True
                 i +=1
                 break
+            if next_state.color[i+1][y] == "open_black":
+                return False, -1
             i += 1
         return end, i
