@@ -10,6 +10,14 @@ from Level import Level_9
 from Level import Level_10
 from Level import Level_11
 from Level import Level_12
+from Level import Level_13
+from Level import Level_14
+from Level import Level_15
+from Level import Level_16
+from Level import Level_17
+from Level import Level_18
+from Level import Level_19
+from Level import Level_20
 
 import copy
 
@@ -54,5 +62,30 @@ class Levels:
         elif level_number == 12:
             level_12 = Level_12.Level_12()
             return level_12.generate_level_12(), level_12.generate_goal_12()
+        elif level_number == 13:
+            level_13 = Level_13.Level_13()
+            return level_13.generate_level_13(), level_13.generate_goal_13()
+        elif level_number == 14:
+            level_14 = Level_14.Level_14()
+            return level_14.generate_level_14(), level_14.generate_goal_14()
+        elif level_number == 15:
+            level_15 = Level_15.Level_15()
+            return level_15.generate_level_15(), level_15.generate_goal_15()
+        elif level_number == 16:
+            level_16 = Level_16.Level_16()
+            return level_16.generate_level_16(), level_16.generate_goal_16()
+        elif level_number == 17:
+            level_17 = Level_17.Level_17()
+            return level_17.generate_level_17(), level_17.generate_goal_17()
+        elif level_number == 18:
+            level_18 = Level_18.Level_18()
+            return level_18.generate_level_18(), level_18.generate_goal_18()
+        elif level_number == 19:
+            level_19 = Level_19.Level_19()
+            return level_19.generate_level_19(), level_19.generate_goal_19()
+        elif level_number == 20:
+            level_20 = Level_20.Level_20()
+            return level_20.generate_level_20(), level_20.generate_goal_20()
+
         else:
             return False, False
