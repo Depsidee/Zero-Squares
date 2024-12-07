@@ -6,6 +6,7 @@ class Move:
     
     def move_right(self, pre_state):
         next_state = copy.deepcopy(pre_state)
+        next_state.cost = 0
         for i in range(len(pre_state.grid)):
             for j in range(len(pre_state.grid[i])-1,-1,-1):
                 if pre_state.status[i][j] == "free":
@@ -18,10 +19,12 @@ class Move:
                         next_state.color[i][y] = "white"
                         next_state.fixed_grid[i][y] = "⬜️"
                         next_state.fixed_color[i][y] = "white"
+                        next_state.cost += abs(y - j)
                     elif y != -1:
                         next_state.grid[i][y] = pre_state.grid[i][j]
                         next_state.color[i][y] = pre_state.color[i][j]
                         next_state.status[i][y] = pre_state.status[i][j]
+                        next_state.cost += abs(y - j)
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
@@ -31,6 +34,7 @@ class Move:
     
     def move_left(self, pre_state):
         next_state = copy.deepcopy(pre_state)
+        next_state.cost = 0
         for i in range(len(pre_state.grid)):
             for j in range(len(pre_state.grid[i])):
                 if pre_state.status[i][j] == "free":
@@ -43,10 +47,12 @@ class Move:
                         next_state.color[i][y] = "white"
                         next_state.fixed_grid[i][y] = "⬜️"
                         next_state.fixed_color[i][y] = "white"
+                        next_state.cost += abs(j - y)
                     elif y != -1:
                         next_state.grid[i][y] = pre_state.grid[i][j]
                         next_state.color[i][y] = pre_state.color[i][j]
                         next_state.status[i][y] = pre_state.status[i][j]
+                        next_state.cost += abs(j - y)
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
@@ -56,6 +62,7 @@ class Move:
     
     def move_up(self, pre_state):
         next_state = copy.deepcopy(pre_state)
+        next_state.cost = 0
         for i in range(len(pre_state.grid)):
             for j in range(len(pre_state.grid[i])):
                 if pre_state.status[i][j] == "free":
@@ -68,10 +75,12 @@ class Move:
                         next_state.color[x][j] = "white"
                         next_state.fixed_grid[x][j] = "⬜️"
                         next_state.fixed_color[x][j] = "white"
+                        next_state.cost += abs(i - x)
                     elif x != -1:
                         next_state.grid[x][j] = pre_state.grid[i][j]
                         next_state.color[x][j] = pre_state.color[i][j]
                         next_state.status[x][j] = pre_state.status[i][j]
+                        next_state.cost += abs(i - x)
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":
@@ -81,6 +90,7 @@ class Move:
     
     def move_down(self, pre_state):
         next_state = copy.deepcopy(pre_state)
+        next_state.cost = 0
         for i in range(len(pre_state.grid)-1,-1,-1):
             for j in range(len(pre_state.grid[i])):
                 if pre_state.status[i][j] == "free":
@@ -93,10 +103,12 @@ class Move:
                         next_state.color[x][j] = "white"
                         next_state.fixed_grid[x][j] = "⬜️"
                         next_state.fixed_color[x][j] = "white"
+                        next_state.cost += abs(x - i)
                     elif x != -1:
                         next_state.grid[x][j] = pre_state.grid[i][j]
                         next_state.color[x][j] = pre_state.color[i][j]
                         next_state.status[x][j] = pre_state.status[i][j]
+                        next_state.cost += abs(x - i)
         for i in range(len(next_state.grid)):
             for j in range(len(next_state.grid[i])):
                 if next_state.grid[i][j] == "⬜️" and next_state.fixed_grid[i][j] != "⬜️":

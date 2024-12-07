@@ -1,8 +1,10 @@
 import Move
-
+import sys
 move = Move.Move()
 
 class State:
+    sys.setrecursionlimit(100000)
+    
     def __init__(self, grid, color, status, fixed_grid=[], fixed_color=[]):
         self.grid = grid
         self.color = color
@@ -10,6 +12,7 @@ class State:
         self.fixed_grid = fixed_grid
         self.fixed_color = fixed_color
         self.stateSpace = []
+        self.cost = 0
     
     def __eq__(self, other):
         if not isinstance(other, State):

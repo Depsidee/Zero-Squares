@@ -1,6 +1,10 @@
 import State
 import heapq
+import sys
+
 class A_star:
+    sys.setrecursionlimit(100000)
+    
     def __init__(self):
         pass
     
@@ -11,7 +15,7 @@ class A_star:
          cost = {}
          heuristic = {}
          parent[init_state] = None
-         cost[init_state] = 0
+         cost[init_state] = init_state.cost
          heuristic[init_state] = cost[init_state] + init_state.get_heuristic()
          heapq.heappush(pq, (heuristic[init_state], init_state))
          
@@ -26,8 +30,10 @@ class A_star:
                 path = self.get_path(parent, current_state)
                 print(f"Number of visited states = {len(visited)}")
                 return path
+            """ print(current_state.show())
+            print(len(current_state.state_space())) """
             for next_state in current_state.state_space():
-                new_cost = current_cost + 1
+                new_cost = current_cost + next_state.cost
                 if next_state not in parent or (next_state in cost and new_cost < cost[next_state]):
                     parent[next_state] = current_state
                     cost[next_state] = new_cost

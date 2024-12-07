@@ -8,23 +8,26 @@ import UCS
 import A_star
 import Hill_Climbing
 import copy
+import sys
 
 class Main:
+    sys.setrecursionlimit(100000)
     levels = Levels.Levels()
     move = Move.Move()
-    level_number = 26
+    level_number = 1
     level, goal = levels.new_level(level_number)
 
     pre_state = State.State(level["grid"],level["color"],level["status"],level["fixed_grid"],level["fixed_color"])
     goal_state = State.State(goal["grid"],goal["color"],goal["status"])
-
-    print(pre_state.show())
-    print(f"heuristic = {pre_state.get_heuristic()}")
-    print()
-    pre_state.state_space()
     
     continue_loop = True
     while continue_loop == True:
+        print(f"Level {level_number}")
+        print(pre_state.show())
+        print(f"heuristic = {pre_state.get_heuristic()}")
+        print()
+        pre_state.state_space()
+        
         x = input()
         
         """ Computer Plays """
@@ -43,9 +46,12 @@ class Main:
         elif x == "a*":
             a_star = A_star.A_star()
             path = a_star.play_A_star(pre_state,goal_state)
-        elif x == "hill climbing":
+        elif x == "steepest ascent hill climbing":
             hill_climbing = Hill_Climbing.Hill_Climbing()
-            path = hill_climbing.play_Hill_Climbing(pre_state, goal_state)
+            path = hill_climbing.play_Steepest_Ascent_Hill_Climbing(pre_state, goal_state)
+        elif x == "simple hill climbing":
+            hill_climbing = Hill_Climbing.Hill_Climbing()
+            path = hill_climbing.play_Simple_Hill_Climbing(pre_state, goal_state)
             
         level_number += 1
         level, goal = levels.new_level(level_number)

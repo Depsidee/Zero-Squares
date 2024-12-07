@@ -1,6 +1,9 @@
 import State
 from collections import deque
+import sys
 class BFS:
+    sys.setrecursionlimit(100000)
+    
     def __init__(self):
         pass
     
@@ -21,8 +24,10 @@ class BFS:
                 path = self.get_path(parent, current_state)
                 print(f"Number of visited states = {len(visited)}")
                 return path
+            """ print(current_state.show())
+            print(len(current_state.state_space())) """
             for next_state in current_state.state_space():
-                if next_state not in visited and next_state not in parent:
+                if next_state not in visited:
                     parent[next_state] = current_state
                     q.append(next_state)
             

@@ -1,5 +1,8 @@
 import State
+import sys
 class Recursive_DFS:
+    sys.setrecursionlimit(100000)
+    
     def __init__(self):
         self.visited = set()
         self.parent = {}
@@ -18,6 +21,8 @@ class Recursive_DFS:
             path = self.get_path(self.parent, goal_state)
             print(f"Number of visited states = {len(self.visited)}")
             return path
+         """ print(current_state.show())
+         print(len(current_state.state_space())) """
          for next_state in current_state.state_space():
             if next_state not in self.visited:
                 self.parent[next_state] = current_state

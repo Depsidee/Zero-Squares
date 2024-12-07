@@ -1,6 +1,10 @@
 import State
 import heapq
+import sys
+
 class UCS:
+    sys.setrecursionlimit(100000)
+    
     def __init__(self):
         pass
     
@@ -10,7 +14,7 @@ class UCS:
          parent = {}
          cost = {}
          parent[init_state] = None
-         cost[init_state] = 0
+         cost[init_state] = init_state.cost
          heapq.heappush(pq, (cost[init_state], init_state))
          
          while len(pq) > 0:
@@ -20,11 +24,13 @@ class UCS:
             visited.add(current_state)
             
             if current_state.grid == goal_state.grid:
-                path = self.get_path(parent, current_state)
+                path = self.get_path(parent, current_state, cost)
                 print(f"Number of visited states = {len(visited)}")
                 return path
+            """ print(current_state.show())
+            print(len(current_state.state_space())) """
             for next_state in current_state.state_space():
-                new_cost = current_cost + 1
+                new_cost = current_cost + next_state.cost
                 if next_state not in parent or (next_state in cost and new_cost < cost[next_state]):
                     parent[next_state] = current_state
                     cost[next_state] = new_cost
@@ -32,7 +38,7 @@ class UCS:
             
          return None
     
-    def get_path(self, parent, goal_state):
+    def get_path(self, parent, goal_state, cost):
         path = []
         current_state = goal_state
         while current_state is not None:
@@ -40,10 +46,11 @@ class UCS:
             current_state = parent[current_state]
         
         path.reverse()
-        self.print_path(path)
+        self.print_path(path, cost)
         print(f"number of states in path = {len(path)}")
         return path
     
-    def print_path(self, path):
+    def print_path(self, path, cost):
         for state in path:
             print(state.show())
+            print(f"cost = {cost[state]}")

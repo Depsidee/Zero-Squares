@@ -36,7 +36,7 @@ class Level_6:
                 ["black", "black", "black", "black", "black", "black", "white", "white", "white"],
                 ["black", "red", "white", "white", "white", "black", "black", "white", "white"],
                 ["black", "white", "white", "blue", "white", "white", "black", "black", "black"],
-                ["black", "white", "white", "white", "white", "white", "white", "rwhite", "black"],
+                ["black", "white", "white", "white", "white", "white", "white", "white", "black"],
                 ["black", "black", "black", "black", "black", "black", "black", "black", "black"]
             ]
         }

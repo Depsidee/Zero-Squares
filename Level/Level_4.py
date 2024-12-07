@@ -54,7 +54,7 @@ class Level_4:
                 ["black", "black", "black", "black", "white", "white", "white", "white", "white", "white", "black"],
                 ["black", "white", "black", "white", "white", "white", "white", "black", "white", "white", "black"],
                 ["black", "white", "white", "red", "white", "white", "white", "white", "white", "white", "black"],
-                ["black", "rwhite", "white", "white", "white", "white", "black", "white", "white", "white", "black"],
+                ["black", "white", "white", "white", "white", "white", "black", "white", "white", "white", "black"],
                 ["black", "white", "white", "white", "white", "black", "black", "black", "black", "black", "black"],
                 ["black", "white", "white", "white", "white", "black", "white", "white", "white", "white", "white"],
                 ["black", "black", "black", "black", "black", "black", "white", "white", "white", "white", "white"]
