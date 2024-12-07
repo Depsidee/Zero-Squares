@@ -95,9 +95,14 @@ class State:
                     free += 1
                     for ii in range(len(self.fixed_grid)):
                         for jj in range(len(self.fixed_grid[ii])):
-                            if self.fixed_color[ii][jj] == self.color[i][j] and self.fixed_grid[ii][jj] == self.grid[i][j]:
-                                manhatain_dist = abs(i-ii)+abs(j-jj)
-                                heuristic += manhatain_dist
+                            if sum(item.count(self.color[i][j]) for item in self.fixed_color) == 0:
+                                if self.fixed_color[ii][jj] == "open_white":
+                                   manhattan_dist = abs(i-ii)+abs(j-jj)
+                                   heuristic += manhattan_dist
+                            else:
+                                if self.fixed_color[ii][jj] == self.color[i][j]:
+                                    manhattan_dist = abs(i-ii)+abs(j-jj)
+                                    heuristic += manhattan_dist
                                 
         """ heuristic += free """
         return heuristic
